@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox checkPreto, checkVermelho, checkRosa;
     //RadioButton
     private RadioButton sexoMasculino, sexoFeminino;
+    private RadioGroup opcaoSexo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         //RadioButton
         sexoFeminino = findViewById(R.id.radioButtonFemenino);
         sexoMasculino = findViewById(R.id.radioButtonMasculino);
+        opcaoSexo     = findViewById(R.id.radioGroupSexo);
+        radiobutton();
     }
 
 /*    public void checkBox() {
@@ -67,11 +71,20 @@ when the user receive a selection box, the object checkBox receive a event click
 
     public void radiobutton() {
 
-        if (sexoMasculino.isChecked()) {
+        opcaoSexo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioButtonMasculino){
+                    textoResultado.setText("Masculino");
+                }else if ( checkedId == R.id.radioButtonFemenino) {
+                    textoResultado.setText("Feminino");
+                }
+            }
+        });
+        /*if (sexoMasculino.isChecked()) {
         textoResultado.setText("Masculino");
         } else if (sexoFeminino.isChecked()) {
         textoResultado.setText("Feminino");
-        }
+        }*/
     }
 
         public void enviar (View view){
